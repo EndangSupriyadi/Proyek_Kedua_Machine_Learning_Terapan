@@ -199,7 +199,7 @@ mendefinisikan ulang book_datase dan rating_dataset
 akan mengambil user_id secara acak dari rating_dataset. Dari user_id ini kita perlu mengetahui buku - buku apa saja yang pernah dibaca dan yang belum pernah dibaca, sehingga kita hanya dapat merekomendasikan buku - buku yang belum dibaca.
 hasilnya seperti gambar  7 ini
 Gambar 7 <br>
-<a href="https://ibb.co/cvZdt5g"><img src="https://i.ibb.co/SxMp0Ts/Screenshot-2024-04-01-185641.png" alt="Screenshot-2024-04-01-185641" border="0"></a><br /><a target='_blank' href='https://id.imgbb.com/'>tempat menyimpan foto</a><br />
+<a href="https://ibb.co/cvZdt5g"><img src="https://i.ibb.co/SxMp0Ts/Screenshot-2024-04-01-185641.png" alt="Screenshot-2024-04-01-185641" border="0">
 diatas menampilkan rekomdasi buku buku
 
 

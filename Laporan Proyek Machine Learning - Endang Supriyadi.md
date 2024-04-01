@@ -1,50 +1,64 @@
-# Laporan Proyek Machine Learning - Endang Supriyadi
+# Laporan Proyek Rekomendasi Machine Learning - Endang Supriyadi
 
-## Domain Proyek
-Kondisi ekonomi dan keuangan merupakan salah satu topik yang selalu berkembang dan menjadi perhatian masyarakat, baik masyarakat indonesia maupun masyarakat dunia. Perkembangan ekonomi tersebut akan senantiasa berubah seiring naiknya kebutuhan pokok, perubahan tersebut disebabkan oleh inflasi yang menurunkan daya beli masyarakat terhadap barang atau jasa akibat nilai tukar mata uang yang menurun. Emas /_Gold_ merupakan barang yang berharga saat ini,selain sebagai perhiasan emas juga sebagai investasi. Peran investasi sangat penting untuk dapat mencegah penurunan lebih rendah lagi atau bahkan dapat meningkatkan pertumbuhan ekonomi [1]. Tujuan dari sebuah investasi adalah sebuah keuntungan maka banyak orang berinvestasi dengan emas, karena harga emas atau logam mulia cenderung stabil dan beresko rendah dibandingkan dengan investasi lain. Ketika terjadi inflasi harga emas tidak berubah dan cenderung aman [2]. Dengan teknologi machine learning memprediksi harga emas bisa dengan cepat karena cukup dengan dilatih dengan dataset yang sudah bersih sehingga bisa meningkatkan akurasi dalam memprediksi harga emas.
+## Project Overview
+Membaca adalah suatu proses yang dilakukan oleh pembaca untuk menerima pesan atau informasi yang  disampaikan  oleh  penulis  melalui  media  kata-kata  atau  bahasa  tulis. Dengan membaca dapat memahami dengan luas topik yang  dibaca. Seiring berjalannya waktu banyak orang yang  melupakan  betapa  pentignya  membaca buku   membaca   buku merupakan   sumber informasi, buku merupakan jendela dunia, Dengan makin sering seseorang membaca akan memengaruhi fungsi otak dan mengingkatkan memori sesorang [1].Untuk meningkatkan minat baca seseorang pasti orang punya kesukaan buku atau jenis buku yang dibaca disini perlu adanya rekomendasi baik dari segi penulis, jenis buka dll. agar seseorang akan lebih tertarik dan hobi lagi membaca.
 
-Kontribusi dari penerapan _machine learning_ dalam memprediksi harga emas adalah memberikan perkiraan yang lebih akurat dan cepat dibandingkan dengan metode tradisional. Dengan menggunakan teknik _machine learning_, dapat memanfaatkan pola kompleks dalam data historis untuk membuat prediksi yang lebih baik tentang pergerakan harga emas di masa depan, yang dapat membantu investor dan pelaku pasar membuat keputusan investasi yang lebih baik.
-
+Referensi Jurnal : 
+[1]	A. Suryana, I. B. Zaki, J. Sua, G. Phua, J. Jekson, and C. Celvin, “Pentingnya Membaca Buku bagi Generasi Baru di Era Teknologi Bersama Komunitas Ayobacabatam,” Natl. Conf. Community Serv. Proj., vol. 3, pp. 715–720, 2021, [Online]. Available: https://journal.uib.ac.id/index.php/nacospro/article/view/6010
 
 
 ## _Business Understanding_
-1. _Problem Statements_
-- Dari serangkaian fitur yang ada, fitur apa yang paling berpengaruh terhadap harga emas?
-- Berapa harga pasar emas dengan karakteristik atau fitur tertentu?
-2. _Goals_
-- Mengetahui fitur yang paling berkorelasi dengan harga emas yang akan digunakan untuk pelatihan model dan nantinya akan menghasilkan prediksi yang akurat terkait dengan harga emas untuk melakukan investasi.
-- Membuat model machine learning yang dapat memprediksi harga emas seakurat mungkin berdasarkan fitur-fitur yang ada dengan membangun model regresi dan menggunakan metrik _Mean Squared Error_ (MSE) atau _Root Mean Square Error_ (RMSE) untuk mengukur seberapa jauh hasil prediksi dengan nilai yang sebenarnya. 
+1. Problem Statements
+- Berdasarkan data mengenai pengguna, bagaimana membuat sistem rekomendasi yang dipersonalisasi dengan teknik content-based filtering?
+- Dengan data rating yang Anda miliki, bagaimana perusahaan dapat merekomendasikan buku lain yang mungkin disukai dan belum pernah dibaca oleh pengguna? 
+2. Goals
+- Menghasilkan sejumlah rekomendasi buku yang dipersonalisasi untuk pengguna dengan teknik content-based filtering.
+- Menghasilkan sejumlah rekomendasi buku yang sesuai dengan preferensi pengguna dan belum pernah dikunjungi sebelumnya dengan teknik collaborative filtering.
 
 
 ## _Data Understanding_
 
-Data historis yang diambil dari Yahoo Finance untuk _Gold ETF_ memiliki 7 kolom: Tanggal, Open, High, Low, Close, Adjusted Close, dan Volume. Berikut penjelasan mengenai variabel data tersebut:
-- Tanggal (Date): Ini adalah tanggal perdagangan untuk setiap data historis.
-- Open: Harga pembukaan Gold ETF pada hari tersebut.
-- High: Harga tertinggi Gold ETF yang dicapai pada hari tersebut.
-- Low: Harga terendah Gold ETF yang dicapai pada hari tersebut.
-- Close: Harga penutupan Gold ETF pada hari tersebut.
-- Adjusted Close: Harga penutupan yang telah disesuaikan dengan faktor-faktor seperti dividen, pemecahan saham (stock split), dan penerbitan saham baru. Adjusted Close dianggap sebagai representasi harga yang lebih akurat untuk analisis jangka panjang.
-- Volume: Jumlah lembar saham Gold ETF yang diperdagangkan pada hari tersebut.
+Dataset _Book Recommendation Dataset_ ini memiliki 3 file
+1. Users
+Berisi para pengguna. Perhatikan bahwa ID pengguna (User-ID) telah dianonimkan dan dipetakan ke bilangan integer. Data demografis disediakan (_Location, Age_) jika tersedia. Jika tidak, bidang-bidang ini berisi nilai NULL.
+2. Books
+Buku diidentifikasi dengan ISBN masing-masing. ISBN yang tidak valid telah dihapus dari kumpulan data. Selain itu, beberapa informasi berbasis konten diberikan (_Book-Title, Book-Author, Year-Of-Publication, Publisher_), yang diperoleh dari Amazon Web Services. Perhatikan bahwa jika ada beberapa pengarang, hanya pengarang pertama yang disediakan. URL yang menautkan ke gambar sampul juga diberikan, muncul dalam tiga rasa yang berbeda (_Image-URL-S, Image-URL-M, Image-URL-L_), yaitu kecil, sedang, besar. URL ini mengarah ke situs web Amazon.
 
-dataset ada 1718 rows dan 81 columns
+3. Ratings
+Berisi informasi peringkat buku. _Ratings_ (_Book-Rating_) dapat berupa nilai eksplisit, yang dinyatakan dalam skala 1-10 (nilai yang lebih tinggi menunjukkan apresiasi yang lebih tinggi), atau implisit, yang dinyatakan dengan angka 0.
 
-hal menarik data close dan adjusted close sama nilainya maka dari itu diperbolehkan memilih salah satu saja <br>
-
-menghitung korelasi antara kolom-kolom dalam dataframe golds dan menvisualisasikannya sehingga jika semakin tinggi nilai korelasi semakin kuat hubungan antara kolom target dan kolom yang bersangkutan. di gambar 1 korelasi yang kuat itu kolom high, low, open, close dan adj close. adj close dan close nilainya sama maka boleh pilih salah satu saja. di bawah ini menngunakan target columnnya itu close
+dataset buku ada 271360 rows dan 8 columns
+dataset rating ada 1149780 rows dan 3 columns
+dataset user ada 278858 rows dan 3 columns
 
 
-gambar 1
-<br>
-<a href="https://ibb.co/QbLKxgv"><img src="https://i.ibb.co/mDkcPj5/download-13.png" alt="download-13" border="0"></a>
- <br>
 
-
-sumber dataset [https://www.kaggle.com/datasets/sid321axn/gold-price-prediction-dataset/data]
+sumber dataset https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset
 
 ### _Eksploratory Data_
 membaca dataset
-pertama arahkan alamat path penyimpanan dataset , setalah itu membaca dan menampilkan data dengan "read_csv" pastikan dataset berformat csv. Data ini masih bersifat mentah perlu menyaring data apa saja yang dibutuhkan dalam mengerjakan proyek ini seperti pada Tabel 1.
+pertama arahkan alamat path penyimpanan dataset , setalah itu membaca dan menampilkan data dengan "read_csv" pastikan dataset berformat csv. untuk melihat jumlah data dalam dataset gunakan "dataset.shape". 
+1. Melihat Dataset rating
+   | | **User-Id** | **ISBN** | **Book-Rating** |
+   |-|-------------|----------|-----------------|
+   |0|276725       |034545104X|0                |
+   |1|276726       |0155061224|5                |
+   |2|276727       |0446520802|0                |
+   |3|276729       |052165615X|3                |
+   |4|276729       |0521795028|6                |
+  
+2. Melihat Dataset book
+   | | **ISBN** | **Book-Title**              | **Book-Author**     | **Year-Of-Publication** | **Publisher**            |	
+   |-|----------|---------------- ------------|---------------------|-------------------------|--------------------------|
+   |0|0195153448|Classical Mythology          |Mark P. O. Morford   |2002                     |Oxford University Press   |
+   |1|0002005018|Clara Callan                 |Richard Bruce Wright |2001                     |HarperFlamingo Canada     |
+   |2|0060973129|Decision in Normandy         |Carlo D'Este         |1991                     |HarperPerennial           |
+   |3|0374157065|Flu: The Story of the Great..|Gina Bari Kolata     |1999                     |Farrar Straus Giroux	     |
+   |4|0393045218|The Mummies of Urumchi       |E. J. W. Barber	     |1999                     |W. W. Norton &amp; Company|
+
+
+
+Data ini masih bersifat mentah perlu menyaring data apa saja yang dibutuhkan dalam mengerjakan proyek ini seperti pada Tabel 1.
 
 Tabel 1 <br>
 

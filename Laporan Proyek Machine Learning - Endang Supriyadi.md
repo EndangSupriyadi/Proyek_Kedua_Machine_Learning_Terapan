@@ -30,7 +30,6 @@ dataset user ada 278858 rows dan 3 columns
 
 
 
-sumber dataset https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset
 
 ### _Eksploratory Data_
 membaca dataset
@@ -190,19 +189,38 @@ Gambar 6 <br>
 
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/Qp5xg46/download-19.png" alt="download-19" border="0"></a>
 <br>
-Perhatikanlah pada gambar 6, proses training model cukup smooth dan model konvergen pada epochs sekitar 30. Dari proses ini, kita memperoleh nilai error akhir sebesar sekitar 0.1993 dan error pada data validasi sebesar 0.3447. 
+Perhatikanlah pada gambar 6, proses training model cukup smooth dan model konvergen pada epochs sekitar 30. Dari proses ini, kita memperoleh nilai error akhir sebesar sekitar 0.1983 dan error pada data validasi sebesar 0.3443. 
 
 
 
 ### Mendapatkan Rekomendasi
 mendefinisikan ulang book_datase dan rating_dataset
 akan mengambil user_id secara acak dari rating_dataset. Dari user_id ini kita perlu mengetahui buku - buku apa saja yang pernah dibaca dan yang belum pernah dibaca, sehingga kita hanya dapat merekomendasikan buku - buku yang belum dibaca.
-hasilnya seperti gambar  7 ini
+hasilnya seperti gambar  7 ini <br>
+
 Gambar 7 <br>
+
 <a href="https://ibb.co/cvZdt5g"><img src="https://i.ibb.co/SxMp0Ts/Screenshot-2024-04-01-185641.png" alt="Screenshot-2024-04-01-185641" border="0">
-diatas menampilkan rekomdasi buku buku
+
+<br>
+Gambar 7 menampilkan rekomendasi buku buku dengan _user_ : 278418
+diantaranya menampilkan buku : <br>
+Prince Caspian : C. S. Lewis <br>
+The House With a Clock in Its Walls : John Bellairs <br>
+Songs in Ordinary Time (Oprah's Book Club (Paperback)) : Mary McGarry Morris <br>
+At Home in Mitford (The Mitford Years) : Jan Karon <br>
+Young Wives : Olivia Goldsmith <br>
+Julie of the Wolves (Julie of the Wolves) : Jean Craighead George <br>
+More Scary Stories To Tell In The Dark : Alvin Schwartz <br>
+Where the Lilies Bloom : Bill Cleaver <br>
+CADDIE WOODLAWN : Carol Ryrie Brink <br>
+The Thief of Always : Clive Barker <br>
+
 
 
 Referensi Jurnal : <br>
 [1]	A. Suryana, I. B. Zaki, J. Sua, G. Phua, J. Jekson, and C. Celvin, “Pentingnya Membaca Buku bagi Generasi Baru di Era Teknologi Bersama Komunitas Ayobacabatam,” Natl. Conf. Community Serv. Proj., vol. 3, pp. 715–720, 2021, [Online]. Available: https://journal.uib.ac.id/index.php/nacospro/article/view/6010
+
+sumber dataset https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset
+
 

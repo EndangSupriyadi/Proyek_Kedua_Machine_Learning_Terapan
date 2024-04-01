@@ -38,7 +38,12 @@ sumber dataset https://www.kaggle.com/datasets/arashnic/book-recommendation-data
 ### _Eksploratory Data_
 membaca dataset
 pertama arahkan alamat path penyimpanan dataset , setalah itu membaca dan menampilkan data dengan "read_csv" pastikan dataset berformat csv. untuk melihat jumlah data dalam dataset gunakan "dataset.shape". 
-1. Melihat Dataset rating
+
+1. Membaca Dataset rating
+   membaca dataset rating yang terdiri dari User-Id, ISBN, dan Book-Rating. seperti pada Tabel 1.
+
+   Tabel 1 <br>
+
    | | **User-Id** | **ISBN** | **Book-Rating** |
    |-|-------------|----------|-----------------|
    |0|276725       |034545104X|0                |
@@ -48,89 +53,40 @@ pertama arahkan alamat path penyimpanan dataset , setalah itu membaca dan menamp
    |4|276729       |0521795028|6                |
   
 2. Melihat Dataset book
+   membaca dataset book yang terdiri dari ISBN, Book-Title, Book-Author, Year-Of-Publication dan Publisher seperti di Tabel 2. <br>
+   Tabel 2 <br>
+
+   
    | | **ISBN** | **Book-Title**              | **Book-Author**     | **Year-Of-Publication** | **Publisher**            |	
-   |-|----------|---------------- ------------|---------------------|-------------------------|--------------------------|
+   |-|----------|-----------------------------|---------------------|-------------------------|--------------------------|
    |0|0195153448|Classical Mythology          |Mark P. O. Morford   |2002                     |Oxford University Press   |
    |1|0002005018|Clara Callan                 |Richard Bruce Wright |2001                     |HarperFlamingo Canada     |
    |2|0060973129|Decision in Normandy         |Carlo D'Este         |1991                     |HarperPerennial           |
-   |3|0374157065|Flu: The Story of the Great..|Gina Bari Kolata     |1999                     |Farrar Straus Giroux	     |
+   |3|0374157065|Flu: The Story of the Great..|Gina Bari Kolata     |1999                     |Farrar Straus Giroux	    |
    |4|0393045218|The Mummies of Urumchi       |E. J. W. Barber	     |1999                     |W. W. Norton &amp; Company|
-
-
-
-Data ini masih bersifat mentah perlu menyaring data apa saja yang dibutuhkan dalam mengerjakan proyek ini seperti pada Tabel 1.
-
-Tabel 1 <br>
-
-| | **Date** | **Open** | **High** | **Low** | **Close** |
-|-|----------|----------|----------|---------|-----------|
-|0|2011-12-15|154.740005|154.949997|151.710007|152.330002|
-|1|2011-12-16|154.309998|155.369995|153.899994|155.229996|
-|2|2011-12-19|155.479996|155.860001|154.360001|154.869995|
-|3|2011-12-20|156.820007|157.429993|156.580002|156.979996|
-|4|2011-12-21|156.979996|157.529999|156.130005|157.160004|
-
-
-
-
-
-<br>
-Menampilkan info DataFrame dari dataset
-di tabel 2 menampilkan typedata dengan perintah " golds.info()" yang nantinya sebagai acuan kedepannya 
-
-<br>
-Tabel 2 <br>
-
-
-|**#**|**Column**        |**Non-Null Count**|**Dtype**|
-|-----|------------------|------------------|---------|
-| 0   |Date              |1718 non-null     |object   |
-| 1   |Open              |1718 non-null     |float64  |
-| 2   |High              |1718 non-null     |float64  |
-| 3   |Low               |1718 non-null     |float64  |
-| 4   |Close             |1718 non-null     |float64  |
 <br>
 
-pada gambar 4 dengan perintah "golds.describe()" menampilkan hasil statistik dari dataframe seperti count, mean dll. hal ini agar mengetahui masing masing statistik perkategorinya 
 
-<br>
-Tabel 3 <br>
-
-
-|       | **Open**  | **High**  | **Low**    | **Close** |
-|-------|-----------|-----------|------------|-----------|
-|count  |1718.000000|1718.000000|1718.000000	|1718.000000|
-|mean   |127.323434 |127.854237	|126.777695	 |127.319482	|
-|std    |17.526993  |17.631189	 |17.396513   |17.536269  |
-|min    |100.919998 |100.989998 |100.230003  |100.500000 |
-|25%	   |116.220001 |116.540001	|115.739998  |116.052502	|
-|50%	   |121.915001 |122.325001	|121.369999  |121.795002	|
-|75%	   |128.427494 |129.087498 |127.840001	 |128.470001	|
-|max	   |173.199997 |174.070007	|172.919998	 |173.610001	|
-
-<br>
-penjelasan : <br>
-Count  adalah jumlah sampel pada data. <br>
-Mean adalah nilai rata-rata. <br>
-Std adalah standar deviasi. <br>
-Min yaitu nilai minimum setiap kolom. <br>
-25% adalah kuartil pertama. Kuartil adalah nilai yang menandai batas interval dalam empat bagian sebaran yang sama. <br>
-50% adalah kuartil kedua, atau biasa juga disebut median (nilai tengah). <br>
-75% adalah kuartil ketiga.<br>
-Max adalah nilai maksimum.<br>
-<br>
 
 #### _Univariate Analysis_
 
-Dalam Dataset ini berisikan time series setiap harga emas per tanggalnya. sehingga perlu diubah type data dari date yang tadinya object menjadi date agar bisa digunakan dan divisualisasikan dengan harga close emas.
-<br>
-gambar 2
+Menvisualisasikan dan meneliti distribusi rating dataframe, pada gambar 1 rating terbanyak adalah 0 karena 0 bukanlah nilai NaN jadi tetap dimasukan dalam proyek ini<br>
+gambar 1 <br>
+
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/6mLd8JG/download-16.png" alt="download-16" border="0"></a>
+
 <br>
 
-<a href="https://ibb.co/s96FRML"><img src="https://i.ibb.co/PG95jfB/Screenshot-2024-03-23-123452.png" alt="Screenshot-2024-03-23-123452" border="0"></a>
+Menvisualisasikan dan meneliti distribusi tahun terbitnya buku dari book dataframe disini data tahun terbit cenderung meningkat setiap tahunnya terbanyak tahun 2002 lihat data di gambar 2<br>
+gambar 2 <br>
+
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/0Fwj476/download-17.png" alt="download-17" border="0"></a>
+
 <br>
 
 
+
+## _Content Filtered Recommendation System_
 ### _Data Preparation_
 <br>
 melakukan transformasi pada data sehingga menjadi bentuk yang cocok untuk proses pemodelan

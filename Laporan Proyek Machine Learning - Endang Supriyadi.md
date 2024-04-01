@@ -3,9 +3,6 @@
 ## Project Overview
 Membaca adalah suatu proses yang dilakukan oleh pembaca untuk menerima pesan atau informasi yang  disampaikan  oleh  penulis  melalui  media  kata-kata  atau  bahasa  tulis. Dengan membaca dapat memahami dengan luas topik yang  dibaca. Seiring berjalannya waktu banyak orang yang  melupakan  betapa  pentignya  membaca buku   membaca   buku merupakan   sumber informasi, buku merupakan jendela dunia, Dengan makin sering seseorang membaca akan memengaruhi fungsi otak dan mengingkatkan memori sesorang [1].Untuk meningkatkan minat baca seseorang pasti orang punya kesukaan buku atau jenis buku yang dibaca disini perlu adanya rekomendasi baik dari segi penulis, jenis buka dll. agar seseorang akan lebih tertarik dan hobi lagi membaca.
 
-Referensi Jurnal : 
-[1]	A. Suryana, I. B. Zaki, J. Sua, G. Phua, J. Jekson, and C. Celvin, “Pentingnya Membaca Buku bagi Generasi Baru di Era Teknologi Bersama Komunitas Ayobacabatam,” Natl. Conf. Community Serv. Proj., vol. 3, pp. 715–720, 2021, [Online]. Available: https://journal.uib.ac.id/index.php/nacospro/article/view/6010
-
 
 ## _Business Understanding_
 1. Problem Statements
@@ -91,169 +88,121 @@ gambar 2 <br>
 <br>
 melakukan transformasi pada data sehingga menjadi bentuk yang cocok untuk proses pemodelan
 
-Cek Nilai _Missing Value_
+##### Cek Nilai _Missing Value_
 dengan" .sum() akan menampilkan data _missing value_. _missing value_ merupakan nilai yang tidak ada atau NaNN yang ada di dataset. _missing value_ bisa mempengaruhi kualiatas prediksi model sehingga harus dihapus atau ganti dengan nilai mean, count, dll. lalu mencek nilai _missing value_ dari kolom open, high dan low.
+##### Membuang Data _Missing Value_ dan Duplikasi
+dengan menggunakan perintah "dataset.dropna()" maka data NaaN akan terhapus. lalu untuk Menghapus Duplikasi yaitu dengan menggunakan perintah "dataset.drop_duplicates()" yang nantinya jika ada row yang duplikat akan terhapus.
 
-#### Mengatasi _outliers_ dengan IQR
-yaitu untuk mengidentifikasi _outlier_ yang berada diluar Q1 dan Q3. nilai apapun yang berada diluar batas ini dianggap sebagai _outlier_ dengan perintah "sns.boxplot()" akan menampilkan visualisasi boxplot. boxplot terlihat apakah ada nilai outliers bisa dilihat dari lingkaran yang berjarak. 
-
-visualisasi boxplot pada kolom open di gambar 3 terlihat ada lingkaran yang berjarak
-<br>
-gambar 3 <br>
-<a href="https://ibb.co/377TDsd"><img src="https://i.ibb.co/wRRd9Lg/Screenshot-2024-03-23-000757.png" alt="Screenshot-2024-03-23-000757" border="0"></a>
-<br>
-visualisasi boxplot pada kolom high di gambar 4 terlihat ada lingkaran yang berjarak
-<br>
-gambar 4 <br>
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/pyQhFsw/Screenshot-2024-03-23-001031.png" alt="Screenshot-2024-03-23-001031" border="0"></a>
-<br>
-visualisasi boxplot pada kolom low di gambar 5 terlihat ada lingkaran yang berjarak
-<br>
-gambar 5 <br>
-<a href="https://ibb.co/hB70Pv5"><img src="https://i.ibb.co/gSjY5C1/Screenshot-2024-03-23-001128.png" alt="Screenshot-2024-03-23-001128" border="0"></a>
-<br>
-
-Untuk mengatasi _outliers_ gunakan metode IQR. metode IQR digunakan untuk mengidentifikasi _outlier_ yang berada di luar Q1 dan Q3. Nilai apa pun yang berada di luar batas ini dianggap sebagai outlier. 
-<br>
-persamaan IQR : 
-<br>
-Batas bawah = Q1 - 1.5 * IQR
-Batas atas = Q3 + 1.5 * IQR
-
-jika melebihi batas tersebut maka akan dihapus terlihat pada ouput shape yang berkurang
-<br>
-
-
-
-##### Train Test Split
-membagi data latih dan data uji 80:20, proporsi tersebut sangat umum digunakan.
-tujuannya agar data uji yang berperan sebagai data baru tidak terkotori dengan informasi yang didapatkan dari data latih. data set ini berubah mejadi  835 data untuk jumlah dataset, 668 data untuk latih, dan 167 data untuk uji karena menggunakan perbandingan 80 data latih dan 20 data uji.
-
-
-#### Standarisasi
-adalah teknik transformasi yang paling umum digunakan dalam tahap persiapan pemodelan. untuk fitur numerik tidak akan melakukan transformasi dengan one-hot-encoding seperti pada fitur kategori. tapi akan menggunakan teknik StandarScaler dari library Scikitlearn
-StandardScaler melakukan proses standarisasi fitur dengan mengurangkan mean (nilai rata-rata) kemudian membaginya dengan standar deviasi untuk menggeser distribusi.  StandardScaler menghasilkan distribusi dengan standar deviasi sama dengan 1 dan mean sama dengan 0. Sekitar 68% dari nilai akan berada di antara -1 dan 1. seperti Tabel 4 dan Tabel 5
-<br>
-Tabel 4 
-<br>
-
-|     |**Open**   |**High**   |**Low**    |
-|-----|-----------|-----------|-----------|
-|946  |-2.165675	 |-2.204928	 |-2.194981  |
-|1381 |0.421708	  |0.373206	  |0.449826   |
-|893  |-1.680881	 |-1.676567	 |-1.634293  |
-|1044 |-0.293227	 |-0.245926	 |-0.250350  |
-|762  |-0.406255	 |-0.446433	 |-0.465053  |
-<br>
-
-Tabel 5
-<br>
-
-
-
-|     |**Open**   |**High**   |**Low**    |
-|-----|-----------|-----------|-----------|
-|count|668.0000 	 |668.0000		 |668.0000	  |
-|mean |-0.0000		  |-0.0000		  |-0.0000	   |
-|std  |1.0007	  	 |1.0007	  	 |1.0007	    |
-|min  |-2.5279 		 |-2.5667	 	 |-2.5697    |
-|25%	 |-0.5213	 	 |-0.5281	 	 |-0.5515    |
-|50%	 |0.0949   	 |0.1077   	 |0.1025     |
-|75%	 |0.7363   	 |0.7366	  	 |0.7281     |
-|max	 |3.1112   	 |3.0855   	 |3.0933     |
-
-<br>
+mengubah dataframe dari buku menjadi list dengan "dataset[].tolist()"
 
 ### _Modeling_
-
-Pengembangan model akan menggunakan beberapa algoritma machine learning yaitu _K-Nearest Neighbor, Random Forest, dan Boosting Algorithm._ Dari ketiga model ini, akan dipilih satu model yang memiliki nilai kesalahan prediksi terkecil. Dengan kata lain, dengan membuat model seakurat mungkin, yaitu model dengan nilai kesalahan sekecil mungkin.
-
-#### Model _KNN_
-algoritma _KNN_ menggunakan ‘kesamaan fitur’ untuk memprediksi nilai dari setiap data yang baru. untuk menentukan titik mana dalam data yang paling mirip dengan input baru, _KNN_ menggunakan perhitungan ukuran jarak. metrik ukuran jarak yang juga sering dipakai antara lain: _Euclidean distance_ dan _Manhattan distance_. Sebagai contoh, jarak _Euclidean_ dihitung sebagai akar kuadrat dari jumlah selisih kuadrat antara titik a dan titik b. Dirumuskan sebagai berikut: <br>
-
-
-$$ d(x,y) = { \sqrt{ \left( \sum_{n=1}^n (xi-yi)^2 \right) }}$$ 
+TF-IDF yang merupakan kepanjangan dari Term Frequency-Inverse Document Frequency memiliki fungsi untuk mengukur seberapa pentingnya suatu kata terhadap kata - kata lain dalam dokumen. Kita umumnya menghitung skor untuk setiap kata untuk menandakan pentingnya dalam dokumen dan corpus. Metode sering digunakan dalam Information Retrieval dan Text Mining.
+dengan menggunakan "from sklearn.feature_extraction.text import TfidfVectorizer" yang nantinya akan memunculkan nama nama penulisnya.
+lalu setelah itu akan melakukan fit dan transformasi ke dalam matriks, matriks tersebut adalah tfidf_matrix
 <br>
-Parameter yang digunakan :
-- n_neighbors: Jumlah tetangga yang akan digunakan untuk membuat prediksi.
-- weights: Cara memberi bobot pada tetangga. Misalnya, "uniform" memberi bobot yang sama pada semua tetangga, sementara "distance" memberi bobot yang lebih besar pada tetangga yang lebih dekat.
-- metric: Metrik jarak yang digunakan untuk mengukur kedekatan antara titik data.
+Gambar 3 <br>
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/PWsz70x/Screenshot-2024-04-01-173228.png" alt="Screenshot-2024-04-01-173228" border="0"></a> <br>
+Pada tfidf_matrix terdapat 10000 ukuran data dan 5575 nama penulis buku
 
-#### Model _Random Forest_
-boosting, algoritma ini bertujuan untuk meningkatkan performa atau akurasi prediksi. Caranya adalah dengan menggabungkan beberapa model sederhana dan dianggap lemah (weak learners) sehingga membentuk suatu model yang kuat (strong ensemble learner). Ada dua teknik pendekatan dalam membuat model ensemble, yaitu bagging dan boosting. Bagging atau bootstrap aggregating adalah teknik yang melatih model dengan sampel random. Dalam teknik bagging, sejumlah model dilatih dengan teknik sampling with replacement (proses sampling dengan penggantian)
+melihat data frame dari matriks dari judul buku dengan penulis - penulis buku seperti pada tabel 3
+Tabel 3 <br>
 
-Parameter yang digunakan :
-- n_estimators: Jumlah pohon keputusan yang akan dibangun dalam ensemble.
-- max_depth: Kedalaman maksimum setiap pohon keputusan dalam ensemble.
-- min_samples_split: Jumlah sampel minimum yang diperlukan untuk membagi node dalam pohon.
-- min_samples_leaf: Jumlah sampel minimum yang diperlukan di leaf node dalam pohon.
+|book_title	|masters|paolo|lagasse|fargues|jewell|
+|-----------|-------|-----|-------|-------|------|
+|Unforgettable (Harlequin Intrigue, No 348)|0.0|0.0|0.0|0.0|0.0|
+|All Our Yesterdays|0.0|0.0|0.0|0.0|0.0|
+|Anna and the King of Siam|0.0|0.0|0.0|0.0|0.0|
+|Now You See It . . .|0.0|0.0|0.0|0.0|0.0|
 
-#### Model _Boosting Algorithm_
-boosting, algoritma ini bertujuan untuk meningkatkan performa atau akurasi prediksi. Caranya adalah dengan menggabungkan beberapa model sederhana dan dianggap lemah (_weak learners_) sehingga membentuk suatu model yang kuat (_strong ensemble learner_). Algoritma boosting muncul dari gagasan mengenai apakah algoritma yang sederhana seperti linear regression dan decision tree dapat dimodifikasi untuk dapat meningkatkan performa. Algoritma yang menggunakan teknik boosting bekerja dengan membangun model dari data latih. Kemudian ia membuat model kedua yang bertugas memperbaiki kesalahan dari model pertama. Model ditambahkan sampai data latih terprediksi dengan baik atau telah mencapai jumlah maksimum model untuk ditambahkan. 
+Dalam sistem rekomendasi, kita perlu mencari cara supaya item yang kita rekomendasikan tidak terlalu jauh dari data pusat, oleh karena itu kita butuh derajat kesamaan pada item, dalam proyek ini, buku dengan derajat kesamaan antar buku dengan cosine similarity hasilnya seperti ini <br>
+array([[1., 0., 0., ..., 0., 0., 0.], <br>
+       [0., 1., 0., ..., 0., 0., 0.],<br>
+       [0., 0., 1., ..., 0., 0., 0.],<br>
+       ...,<br>
+       [0., 0., 0., ..., 1., 0., 0.],<br>
+       [0., 0., 0., ..., 0., 1., 0.],<br>
+       [0., 0., 0., ..., 0., 0., 1.]])<br>
 
-Parameter yang digunakan :
-- n_estimators: Jumlah pohon keputusan yang akan dibangun dalam _ensemble_.
-- learning_rate: Tingkat pembelajaran (learning rate) yang mengontrol kontribusi setiap pohon terhadap model.
-- max_depth: Kedalaman maksimum setiap pohon keputusan dalam _ensemble_.
-- subsample: Fraksi sampel yang akan digunakan untuk pelatihan setiap pohon.
-- colsample_bytree: Fraksi fitur yang akan digunakan untuk pelatihan setiap pohon.
-  
-dengan membandingkan ketiga model itu untuk mengetahui model mana yang lebih akurat dalam menangani kasus ini dengan menggunakan metrik mse bisa mengentahui seberapa besar error dari model ketiga itu
+Nilai K pada fungsi menandakan jumlah rekomendasi yang akan ditampilkan
+Atribut argpartition berguna untuk mengambil sejumlah nilai k, dalam fungsi ini 5 tertinggi dari tingkat kesamaan yang berasal dari dataframe cosine_sim_df
 
-Alasan menggunakan tiga algoritma yaitu _KNN_, _Random Forest_ dan _Boosting_ : <br>
-1. _KNN_ adalah algoritma yang sederhana dan intuitif, serta mudah dipahami. Ini dapat digunakan untuk melakukan regresi (misalnya, memprediksi harga emas berikutnya berdasarkan data historis).
-2. _Random Forest_ adalah metode _ensemble_ yang kuat yang terdiri dari sejumlah besar pohon keputusan. Hal ini sangat efektif dalam menangani _overfitting_, menangani data yang tidak seimbang, serta dalam menangani data dengan jumlah fitur yang besar.
-3. _Boosting_ adalah teknik ensemble yang memperbaiki kinerja model dengan cara berurutan memperbaiki kesalahan prediksi model sebelumnya. Model ini biasanya memberikan kinerja yang sangat baik dalam berbagai masalah prediksi.
+##### Mencari Rekomendasi dari buku yang sudah dibaca 
+Buku yang dibaca yaitu The Diaries of Adam and Eve berikut detailnya sesuai dengan tabel 4
+
+Tabel 4 <br>
+
+|        |**book_ISBN**|**book_title**                |**book_author**|**book_year_of_publication**|
+|--------|-------------|------------------------------|---------------|------------|
+|**4700**|0965881199   |The Diaries of Adam and Eve	|Mark Twain	    |1998        |
+
+<br>
+selanjutnya yaitu menampilkan buku rekomendasi. mungkin beberapa kasus ada yang menampilkan rekomendasi yang sama jadi perlu dihapus jika ada rekomendasi yang sama dengan perintah "rekomendasi.drop_duplicates()". berikut ini 5 rekomendasi buku yang ada di tabel 5
+<br>
+Tabel 5<br>
+
+|   |**book_title**|**book_author**|
+|---|--------------|---------------|
+|0 | ADVENTURES OF HUCKLEBERRY FINN (ENRICHED CLASS...	|Mark Twain|
+|1|Adventures of Huckleberry Finn	|Mark Twain|
+|2|The Complete Short Stories of Mark Twain (Bant...	|Mark Twain|
+|3|Treasury of Illustrated Classics: Adventures o..| Mark Twain|
+|4|A Connecticut Yankee in King Arthur's Court (D...	|Mark Twain|
+
 
 ### _Evaluation_
-Metrik digunakan untuk mengevaluasi seberapa baik model dalam memprediksi harga. Untuk kasus regresi, beberapa metrik yang biasanya digunakan adalah _Mean Squared Error_ (MSE) atau _Root Mean Square Error_ (RMSE). Secara umum, metrik ini mengukur seberapa jauh hasil prediksi dengan nilai yang sebenarnya. <br>
-Rumus MSE:
+memakai metrik evaluasi akurasi di mana akurasi adalah:
+Jumlah buku yang direkomendasikan sesuai penulis / Jumlah buku yang ditulis oleh penulis yang sama
+Variabel books_that_have_been_read_row di bawah ini akan mengambil satu row dari buku yang pernah dibaca sebelumnya, dan variabel books_that_have_been_read_author adalah penulis buku dari buku yang pernah dibaca sebelumnya
+Variabel books_with_the_same_author menunjukkan jumlah buku yang sudah ditulis oleh penulis buku yang berasal dari buku yang pernah dibaca sebelumnya
+Ternyata buku yang telah ditulis oleh Mark Twain berjumlah 16 buku
+dengan nilai akurasi 31.25%
+
+## _Collaborative Filtered Recommendation System_
+Collaborative Based Filtering adalah sistem rekomendasi berdasarkan pendapat suatu komunitas.
+Kelebihan pada Collaborative Based Filtering bila dibandingkan dengan Content Based Filtering adalah pengguna dapat mengeksplorasi item atau konten di luar preferensi pengguna. Pengguna pun juga dapat mendapat rekomendasi sesuai dengan kecenderungan publik yang dianalisa lewat penilaian pengguna - pengguna lainnya.
+Kekurangan pada Collaborative Based Filtering adalah pengguna kurang mendapatkan rekomendasi sesuai preferensi pribadi. Konten - konten yang diberikan oleh sistem rekomendasi lebih banyak berasal dari preferensi publik dan bukan preferensi pribadi.
+
+Pada Collaborative Based Filtering, menggunakan penilaian dari pengguna - pengguna untuk mendapatkan rekomendasi buku - buku.
+### _Data Preparation_
+mengubah user_id, book_id ke type integer dan rating menjadi float
+
+#### cek jumlah pengguna dan buku
+Gambar 4<br>
+<a href="https://ibb.co/1dkKHj1"><img src="https://i.ibb.co/F0FJGC2/Screenshot-2024-04-01-181310.png" alt="Screenshot-2024-04-01-181310" border="0"></a>
+<br>
+Pada Gambar 4 terdapat jumlah pengguna: 679, jumlah buku :4688 , Min Rating : 0.0 dan Max Rating : 10.0
+
+#### Train Test Split
+
+yaitu membagi data latih dan data uji sebesar 80:20 karena perbandingan itu sangat sering digunakan dan cenderung efesien.
+yang ouputnya seperti gambar 5 ini
+Gambar 5 <br>
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/Nj39pdN/Screenshot-2024-04-01-182102.png" alt="Screenshot-2024-04-01-182102" border="0"></a>
 <br>
 
-$$ MSE = { 1/N {  \sum_{i=1}^n (yi-ypred_i)^2  }}$$ 
+### _Model Depeloment_
 
+Pada tahap ini, model menghitung skor kecocokan antara pengguna dan buku dengan teknik embedding. Pertama, kita melakukan proses embedding terhadap data user dan buku. Selanjutnya, lakukan operasi perkalian dot product antara embedding user dan buku. Selain itu, kita juga dapat menambahkan bias untuk setiap user dan buku. Skor kecocokan ditetapkan dalam skala [0,1] dengan fungsi aktivasi sigmoid.
+
+Model ini menggunakan Binary Crossentropy untuk menghitung loss function, Adam (Adaptive Moment Estimation) sebagai optimizer, dan root mean squared error (RMSE) sebagai metrics evaluation. 
+
+Gambar 6 <br>
+
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/Qp5xg46/download-19.png" alt="download-19" border="0"></a>
 <br>
-sebelum menghitung nilai MSE, perlu melakukan proses scaling fitur numerik pada data uji. Sebelumnya, melakukan proses scaling pada data latih untuk menghindari kebocoran data. Sekarang, setelah model selesai dilatih dengan 3 algoritma, yaitu _KNN_, _Random Forest_, dan _Boosting_, perlu melakukan proses scaling terhadap data uji. Hal ini harus dilakukan agar skala antara data latih dan data uji sama dan bisa melakukan evaluasi. 
-
-Dari gambar gambar 11, menggunakan MSE untuk melihat seberapa kemungkinan besar errornya. 
-1. Model _KNN_ hasilnya untuk data latih 0.029005 dan uji 0.034733
-2. Model _Random Forest_ untuk data latih 0.000008 dan uji 0.000046
-3. Model _Boosting_ untuk data latih 0.000575 dan uji 0.000602
-terlihat bahwa, model _Random Forest_ (RF) memberikan nilai eror yang paling kecil yaitu 0.000008 untuk data latih dan 0.000046 untuk data uji. Sedangkan model dengan _KNN_ memiliki eror yang paling besar yaitu 0.029005 untuk data latih dan  0.034733 untuk data uji. Sehingga dapat dilihat model _Random Forest_ sebagai model terbaik untuk melakukan prediksi harga golds. 
-<br>
-Tabel 6
-<br>
-
-
-|              |**train**   |**test**   |
-|--------------|------------|-----------|
-|**KNN**       |0.029005	 	 |0.034733		 |
-|**RF**        |0.000008		  |0.000046		 |
-|**Boosting**  |0.000575	  	|0.000602	  |
-<br>
-
-
-dalam Tabel 7 terdapat nilai uji 109.139999	dengan hasil prediksi KNN : 117.9	, prediksi RF : 109.3	 dan, prediksi Boosting : 107.8. nilai prediksi _Random Forest_ (RF) mendekati nilai uji walaupun nilai prediksi model _Boasting_ juga mendekati nilai uji tapi yang lebih mendekati itu model _Random Forest_ dengan perbedaan sekitar 0.2 saja.
-
-Tabel 7 <br>
+Perhatikanlah pada gambar 6, proses training model cukup smooth dan model konvergen pada epochs sekitar 30. Dari proses ini, kita memperoleh nilai error akhir sebesar sekitar 0.1993 dan error pada data validasi sebesar 0.3447. 
 
 
 
+### Mendapatkan Rekomendasi
+mendefinisikan ulang book_datase dan rating_dataset
+akan mengambil user_id secara acak dari rating_dataset. Dari user_id ini kita perlu mengetahui buku - buku apa saja yang pernah dibaca dan yang belum pernah dibaca, sehingga kita hanya dapat merekomendasikan buku - buku yang belum dibaca.
+hasilnya seperti gambar  7 ini
+Gambar 7 <br>
+<a href="https://ibb.co/cvZdt5g"><img src="https://i.ibb.co/SxMp0Ts/Screenshot-2024-04-01-185641.png" alt="Screenshot-2024-04-01-185641" border="0"></a><br /><a target='_blank' href='https://id.imgbb.com/'>tempat menyimpan foto</a><br />
+diatas menampilkan rekomdasi buku buku
 
-|     |**y_true**   |**prediksi_KNN**|**prediksi_RF**|**prediksi_Boosting**|
-|-----|-------------|----------------|---------------|---------------------|
-|915  |109.139999 	 |117.9   		      |109.3   	      |          107.8      |
-<br>
-
-Proyek ini berhasil karena mendapatkan solusi dari masalah yang ingin diselesaikan dengan mencoba fitur mana saja yang dapat digunakan dalam proyek ini dan mengetahui model mana yang bisa lebih akurat dalam memprediksi harga emas. dengan Model Random Forest bisa lebih akurat dalam memprediksi harga emas karena nilai dari MSE nya lebih kecil dari pada KNN dan Boosting.
-
-Kesimpulannya <br>
-1. fitur yang paling berpengaruh yaitu fitur close dan adj close karena memiliki korelasi yang sangat kuat terhadao fitur open , high , dan low.
-2. setelah membanding ke tiga model itu menggunakan MSE dan melakukan uji, dihasilkan bahwa model Random Forest memiliki nilai error yang rendah dan ketika diuji nilai prediksinya hampir mendekati dibanding dengan model lainnya .
 
 Referensi Jurnal : <br>
-[1] M. D. H. Mela Priantika, Sari Wulandari, “Harga Emas Terhadap Minat Nasabah Berinvestasi Menggunakan Produk Tabungan Emas,” J. Penelit. Pendidik. Sos. Hum., vol. 6, no. 1, pp. 8–12, 2021, doi: 10.32696/jp2sh.v6i1.714. <br>
-[2]	M. Muharrom, “Analisis Komparasi Algoritma Data Mining Naive Bayes, K-Nearest Neighbors dan Regresi Linier Dalam Prediksi Harga Emas,” Bull. Inf. Technol., vol. 4, no. 4, pp. 430–438, 2023, doi: 10.47065/bit.v4i4.986.
+[1]	A. Suryana, I. B. Zaki, J. Sua, G. Phua, J. Jekson, and C. Celvin, “Pentingnya Membaca Buku bagi Generasi Baru di Era Teknologi Bersama Komunitas Ayobacabatam,” Natl. Conf. Community Serv. Proj., vol. 3, pp. 715–720, 2021, [Online]. Available: https://journal.uib.ac.id/index.php/nacospro/article/view/6010
 
-link [https://jurnal-lp2m.umnaw.ac.id/index.php/JP2SH/article/view/714/518] <br>
-link [https://journal.fkpt.org/index.php/BIT/article/view/986/509]

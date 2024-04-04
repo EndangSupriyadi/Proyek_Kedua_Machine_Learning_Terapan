@@ -95,28 +95,31 @@ pada gambar 2 menvisualisasikan dan meneliti distribusi tahun terbitnya buku dar
 <br/>
 gambar 2. Distribusi tahun terbitnya buku <br>
 
-
-
-## _Modeling Content Filtered Recommendation System_
-### _Data Preparation_
+## _Data Preparation_
 <br>
 melakukan transformasi pada data sehingga menjadi bentuk yang cocok untuk proses pemodelan
 
-1. Cek Nilai _Missing Value_
-dengan" .sum() akan menampilkan data _missing value_. _missing value_ merupakan nilai yang tidak ada atau NaNN yang ada di dataset. _missing value_ bisa mempengaruhi kualiatas prediksi model sehingga harus dihapus jika data itu kecil atau mungkin tidak akan berdampak terhadap hasil model.
-2. Membuang Data _Missing Value_ dan Duplikasi
-dengan menggunakan perintah "dataset.dropna()" maka data NaaN akan terhapus. lalu untuk Menghapus Duplikasi yaitu dengan menggunakan perintah "dataset.drop_duplicates()" yang nantinya jika ada row yang duplikat akan terhapus.
-3. menghitung tingkat kesamaan dengan cosine similarity
-   karena _Content Based Filtering_ ini melihat data masa lalu atau riwayatnya maka digunakanlah _cosine similarity_ untuk menghitung tingkat kesamaan atau kemiripannya.
+1.cek jumlah pengguna dan buku
 
-### Evaluation
+<a href="https://ibb.co/1dkKHj1"><img src="https://i.ibb.co/F0FJGC2/Screenshot-2024-04-01-181310.png" alt="Screenshot-2024-04-01-181310" border="0"></a>
+<br>
+Gambar 3<br>
+Pada Gambar 3 terdapat jumlah pengguna: 679, jumlah buku :4688 , Min Rating : 0.0 dan Max Rating : 10.0
+
+2.  Cek Nilai _Missing Value_
+dengan" .sum() akan menampilkan data _missing value_. _missing value_ merupakan nilai yang tidak ada atau NaNN yang ada di dataset. _missing value_ bisa mempengaruhi kualiatas prediksi model sehingga harus dihapus jika data itu kecil atau mungkin tidak akan berdampak terhadap hasil model.
+3. Membuang Data _Missing Value_ dan Duplikasi
+dengan menggunakan perintah "dataset.dropna()" maka data NaaN akan terhapus. lalu untuk Menghapus Duplikasi yaitu dengan menggunakan perintah "dataset.drop_duplicates()" yang nantinya jika ada row yang duplikat akan terhapus.
+
+## _Modeling Content Filtered Recommendation System_
+
 TF-IDF yang merupakan kepanjangan dari Term Frequency-Inverse Document Frequency memiliki fungsi untuk mengukur seberapa pentingnya suatu kata terhadap kata - kata lain dalam dokumen. Kita umumnya menghitung skor untuk setiap kata untuk menandakan pentingnya dalam dokumen dan corpus. Metode sering digunakan dalam Information Retrieval dan Text Mining.
 dengan menggunakan "from sklearn.feature_extraction.text import TfidfVectorizer" yang nantinya akan memunculkan nama nama penulisnya.
 lalu setelah itu akan melakukan fit dan transformasi ke dalam matriks, matriks tersebut adalah tfidf_matrix
 <br>
 
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/PWsz70x/Screenshot-2024-04-01-173228.png" alt="Screenshot-2024-04-01-173228" border="0"></a> <br>
-Gambar 3 matriks <br>
+Gambar 4 matriks <br>
 
 Pada tfidf_matrix terdapat 10000 ukuran data dan 5575 nama penulis buku
 
@@ -165,6 +168,10 @@ Tabel 5<br>
 |3|Treasury of Illustrated Classics: Adventures o..| Mark Twain|
 |4|A Connecticut Yankee in King Arthur's Court (D...	|Mark Twain|
 
+### Evaluation
+Dalam evaluasi yang digunakan adalah precision yaitu salah satu metrik yang digunakan untuk mengukur seberapa akurat sistem rekomendasi dalam memberikan rekomendasi yang relevan kepada pengguna.
+metrik evaluasi precision: Jumlah buku yang direkomendasikan sesuai penulis / Jumlah buku yang ditulis oleh penulis yang sama.
+dan mendapatkan nilai akurasinya sebesar 31.25%
 
 ##  _Modeling Collaborative Filtered Recommendation System_
 Collaborative Based Filtering adalah sistem rekomendasi berdasarkan pendapat suatu komunitas.
@@ -173,17 +180,8 @@ Kekurangan pada Collaborative Based Filtering adalah pengguna kurang mendapatkan
 
 pada _Collaborative Filtered Recommendation System_ menerapkan teknik collaborative filtering untuk membuat sistem rekomendasi. Teknik ini membutuhkan data rating dari user. menghasilkan rekomendasi sejumlah buku yang sesuai dengan preferensi pengguna berdasarkan rating yang telah diberikan sebelumnya. Dari data rating pengguna, kita akan mengidentifikasi buku-buku yang mirip dan belum pernah baca oleh pengguna untuk direkomendasikan. Kita akan menggunakan teknik _collaborative filtering_ untuk membuat rekomendasi ini. 
 
-### _Data Preparation_
-mengubah user_id, book_id ke type integer dan rating menjadi float
 
-1. cek jumlah pengguna dan buku
-
-<a href="https://ibb.co/1dkKHj1"><img src="https://i.ibb.co/F0FJGC2/Screenshot-2024-04-01-181310.png" alt="Screenshot-2024-04-01-181310" border="0"></a>
-<br>
-Gambar 4<br>
-Pada Gambar 4 terdapat jumlah pengguna: 679, jumlah buku :4688 , Min Rating : 0.0 dan Max Rating : 10.0
-
-2. Train Test Split
+1. Train Test Split
 
 yaitu membagi data latih dan data uji sebesar 80:20 karena perbandingan itu sangat sering digunakan dan cenderung efesien.
 yang ouputnya seperti gambar 5 ini <br>
@@ -231,8 +229,9 @@ Tabel 6. 10 Rekomendasi Buku <br>
 
 
 ### Kesimpulan 
-1. sistem ini mampu menghasilkan sejumlah rekomendasi buku yang dipersonalisasi untuk pengguna dengan teknik content-based filtering agar bisa dengan mudah mencari buku yang bertipe sama dengan riwayat pemakaiannya. Dalam program ini merekomdasikannya berdasarkan kesaamaan penulis. <br>
-2.sistem ini Menghasilkan sejumlah rekomendasi buku yang sesuai dengan preferensi pengguna dan belum pernah dikunjungi sebelumnya dengan teknik collaborative filtering agar orang yang baru memakai buku atau ingin membaca buku bertipe berbeda dari sebelumnya bisa mendapatkan rekomendasi yang mungkin sedang banyak digemari saat ini. <br>
+1. sistem ini mampu menghasilkan sejumlah rekomendasi buku yang dipersonalisasi untuk pengguna dengan teknik content-based filtering agar bisa dengan mudah mencari buku yang bertipe sama dengan riwayat pemakaiannya. Dalam program ini merekomdasikannya berdasarkan kesaamaan penulis. <br/>
+
+2. sistem ini Menghasilkan sejumlah rekomendasi buku yang sesuai dengan preferensi pengguna dan belum pernah dikunjungi sebelumnya dengan teknik collaborative filtering agar orang yang baru memakai buku atau ingin membaca buku bertipe berbeda dari sebelumnya bisa mendapatkan rekomendasi yang mungkin sedang banyak digemari saat ini. <br>
 
 
 Referensi Jurnal : <br>

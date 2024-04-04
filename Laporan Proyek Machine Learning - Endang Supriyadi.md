@@ -50,8 +50,8 @@ sumber dataset https://www.kaggle.com/datasets/arashnic/book-recommendation-data
 membaca dataset
 pertama arahkan alamat path penyimpanan dataset , setalah itu membaca dan menampilkan data dengan "read_csv" pastikan dataset berformat csv. untuk melihat jumlah data dalam dataset gunakan "dataset.shape". 
 
-1. Membaca Dataset rating
-   membaca dataset rating yang terdiri dari User-Id, ISBN, dan Book-Rating. dalam tabel ada yang memiliki _book-rating_ yaitu 0 karena 0 termasuk nilai maka dapat digunakan dalam pemrosesan data, seperti pada Tabel 1.
+1. Membaca Dataset rating <br>
+   Dalam Tabel 1 merupakan 5 data teratas dari isi dataset rating yang terdiri dari kolom User-Id, ISBN, dan Book-Rating. dalam tabel ada yang memiliki _book-rating_ yaitu 0 karena 0 termasuk nilai maka dapat digunakan dalam pemrosesan data.
 
    Tabel 1. Dataset Rating <br>
 
@@ -63,8 +63,8 @@ pertama arahkan alamat path penyimpanan dataset , setalah itu membaca dan menamp
    |3|276729       |052165615X|3                |
    |4|276729       |0521795028|6                |
   
-2. Melihat Dataset book
-   membaca dataset book yang terdiri dari ISBN, Book-Title, Book-Author, Year-Of-Publication dan Publisher seperti di Tabel 2. <br>
+2. Melihat Dataset book <br>
+   pada tabel 2 berisi 5 data teratas dari dataset _book_ yang terdiri dari ISBN, _Book-Title_, _Book-Author_, _Year-Of-Publication_ dan _Publisher_ , ISBN disini sebagai kunci pembeda dengan data yang lainnya maka ISBN berbeda pada setiap datanya<br>
    Tabel 2 Dataset book <br>
 
    
@@ -81,21 +81,18 @@ pertama arahkan alamat path penyimpanan dataset , setalah itu membaca dan menamp
 
 #### _Univariate Analysis_
 
-Menvisualisasikan dan meneliti distribusi rating dataframe, pada gambar 1 rating terbanyak adalah 0 karena 0 bukanlah nilai NaN jadi tetap dimasukan dalam proyek ini<br>
+pada gambar 1 yaitu menvisualisasikan dan meneliti distribusi rating dataframe, rating terbanyak adalah 0 dan terendah adalaah 1 <br>
 
 
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/6mLd8JG/download-16.png" alt="download-16" border="0"></a>
-
-<br>
+<br />
 gambar 1. Distribusi Rating <br>
 
-Menvisualisasikan dan meneliti distribusi tahun terbitnya buku dari book dataframe disini data tahun terbit cenderung meningkat setiap tahunnya terbanyak tahun 2002 lihat data di gambar 2 <br>
+pada gambar 2 menvisualisasikan dan meneliti distribusi tahun terbitnya buku dari book dataframe disini data tahun terbit cenderung meningkat setiap tahunnya dan terbanyak tahun 2002 dan data terdiri dari tahun 1955 sampai dengan 2002 <br>
 
 
-
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/0Fwj476/download-17.png" alt="download-17" border="0"></a>
-
-<br>
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/L9PXZPH/download-17.png" alt="download-17" border="0"></a><br />
+<br/>
 gambar 2. Distribusi tahun terbitnya buku <br>
 
 
@@ -112,6 +109,9 @@ dengan menggunakan perintah "dataset.dropna()" maka data NaaN akan terhapus. lal
 
 mengubah dataframe dari buku menjadi list dengan "dataset[].tolist()" agar bisa dibaca dalam pemrosesan
 
+3. menghitung tingkat kesamaan dengan cosine similarity
+   karena _Content Based Filtering_ ini melihat data masa lalu atau riwayatnya maka digunakanlah _cosine similarity_ untuk menghitung tingkat kesamaan atau kemiripannya.
+
 ### _Modeling_
 TF-IDF yang merupakan kepanjangan dari Term Frequency-Inverse Document Frequency memiliki fungsi untuk mengukur seberapa pentingnya suatu kata terhadap kata - kata lain dalam dokumen. Kita umumnya menghitung skor untuk setiap kata untuk menandakan pentingnya dalam dokumen dan corpus. Metode sering digunakan dalam Information Retrieval dan Text Mining.
 dengan menggunakan "from sklearn.feature_extraction.text import TfidfVectorizer" yang nantinya akan memunculkan nama nama penulisnya.
@@ -119,11 +119,12 @@ lalu setelah itu akan melakukan fit dan transformasi ke dalam matriks, matriks t
 <br>
 
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/PWsz70x/Screenshot-2024-04-01-173228.png" alt="Screenshot-2024-04-01-173228" border="0"></a> <br>
-
 Gambar 3 matriks <br>
+
 Pada tfidf_matrix terdapat 10000 ukuran data dan 5575 nama penulis buku
 
-melihat data frame dari matriks dari judul buku dengan penulis - penulis buku seperti pada tabel 3
+melihat data frame dari matriks dari judul buku dengan penulis - penulis buku seperti pada tabel 3 <br>
+
 Tabel 3. matriks dari judul buku dengan penulis - penulis buku  <br>
 
 |book_title	|masters|paolo|lagasse|fargues|jewell|
@@ -197,8 +198,7 @@ Pada Gambar 4 terdapat jumlah pengguna: 679, jumlah buku :4688 , Min Rating : 0.
 yaitu membagi data latih dan data uji sebesar 80:20 karena perbandingan itu sangat sering digunakan dan cenderung efesien.
 yang ouputnya seperti gambar 5 ini <br>
 
-
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/Nj39pdN/Screenshot-2024-04-01-182102.png" alt="Screenshot-2024-04-01-182102" border="0"></a>
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/CHS1mvB/Screenshot-2024-04-01-182102.png" alt="Screenshot-2024-04-01-182102" border="0"></a>
 <br>
 Gambar 5 <br>
 
@@ -208,8 +208,7 @@ Pada tahap ini, model menghitung skor kecocokan antara pengguna dan buku dengan 
 
 Model ini menggunakan Binary Crossentropy untuk menghitung loss function, Adam (Adaptive Moment Estimation) sebagai optimizer, dan root mean squared error (RMSE) sebagai metrics evaluation. 
 
-
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/Qp5xg46/download-19.png" alt="download-19" border="0"></a>
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/MDhMQ3V/download-19.png" alt="download-19" border="0"></a>
 <br>
 Gambar 6 <br>
 

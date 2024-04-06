@@ -1,13 +1,13 @@
 # Laporan Proyek Rekomendasi Machine Learning - Endang Supriyadi
 
 ## Domain Proyek
-Membaca adalah suatu proses yang dilakukan oleh pembaca untuk menerima pesan atau informasi yang  disampaikan  oleh  penulis  melalui  media  kata-kata  atau  bahasa  tulis. Dengan membaca dapat memahami dengan luas topik yang  dibaca. Seiring berjalannya waktu banyak orang yang  melupakan  betapa  pentingnya  membaca buku. membaca buku merupakan sumber informasi, buku merupakan jendela dunia, Dengan makin sering seseorang membaca akan memengaruhi fungsi otak dan mengingkatkan memori sesorang [1].Kadang dalam sebuah perpustakaan orang bingung buku apa saja yang iya ingin baca karena buku dalam perpustakaan itu banyak, maka dari itu diperlukannya sebuah rekomendasi buku sesuai riwayat peminjaman atau buku yang banyak digemari saat ini. hal tersebut bisa sangat membantu orang ketika ingin mencari buku yang mereka gemari.
+Membaca adalah suatu proses yang dilakukan oleh pembaca untuk menerima pesan atau informasi yang  disampaikan  oleh  penulis  melalui  media  kata-kata  atau  bahasa  tulis. Dengan membaca dapat memahami dengan luas topik yang  dibaca. Seiring berjalannya waktu banyak orang yang  melupakan  betapa  pentingnya  membaca buku. membaca buku merupakan sumber informasi, buku merupakan jendela dunia, Dengan makin sering seseorang membaca akan memengaruhi fungsi otak dan mengingkatkan memori sesorang [1].Kadang dalam sebuah perpustakaan orang bingung buku apa saja yang iya ingin baca karena buku dalam perpustakaan itu banyak, maka dari itu diperlukannya sebuah rekomendasi buku sesuai riwayat peminjaman atau buku yang banyak digemari saat ini. hal tersebut bisa sangat membantu orang ketika ingin mencari buku yang digemari.
 
 
 ## _Business Understanding_
 1. Problem Statements
-- bagaimana membuat sistem rekomendasi yang dipersonalisasi dengan teknik content-based filtering agar bisa membantu orang dalam memilih buku yang bertipe sama sesuai riwayat pemakaian bukunya?
-- bagaimana membuat merekomendasikan buku kepada orang lain yang belum memiliki riwayat pemakaian buku atau orang yang ingin membaca buku dengan topik yang berbeda sebelumnya? 
+- Bagaimana membuat sistem rekomendasi yang dipersonalisasi dengan teknik content-based filtering agar bisa membantu orang dalam memilih buku yang bertipe sama sesuai riwayat pemakaian bukunya?
+- Bagaimana membuat merekomendasikan buku kepada orang lain yang belum memiliki riwayat pemakaian buku atau orang yang ingin membaca buku dengan topik yang berbeda sebelumnya? 
 2. Goals
 - Menghasilkan sejumlah rekomendasi buku yang dipersonalisasi untuk pengguna dengan teknik content-based filtering agar bisa dengan mudah mencari buku yang bertipe sama dengan riwayat pemakaiannya.
 - Menghasilkan sejumlah rekomendasi buku yang sesuai dengan preferensi pengguna dan belum pernah dikunjungi sebelumnya dengan teknik collaborative filtering agar orang yang baru memakai buku atau ingin membaca buku bertipe berbeda dari sebelumnya bisa mendapatkan rekomendasi yang mungkin sedang banyak digemari saat ini.
@@ -17,13 +17,13 @@ Membaca adalah suatu proses yang dilakukan oleh pembaca untuk menerima pesan ata
 
 Dataset _Book Recommendation Dataset_ ini memiliki 3 file
 1. Users
-Berisi para pengguna. Perhatikan bahwa ID pengguna (User-ID) telah dianonimkan dan dipetakan ke bilangan integer. Data demografis disediakan (_Location, Age_) jika tersedia. Jika tidak, bidang-bidang ini berisi nilai NULL.  <br>
+   Berisi para pengguna. Perhatikan bahwa ID pengguna (User-ID) telah dianonimkan dan dipetakan ke bilangan integer. Data demografis disediakan (_Location, Age_) jika tersedia. Jika tidak, bidang-bidang ini berisi nilai NULL.  <br>
 _User-ID _= nomer identitas diri dalam dataset <br>
 _Location_ = Lokasi dari _users_  <br>
 _Age_ = Umur dari _users_  <br>
 
 3. Books
-Buku diidentifikasi dengan ISBN masing-masing. ISBN yang tidak valid telah dihapus dari kumpulan data. Selain itu, beberapa informasi berbasis konten diberikan (_Book-Title, Book-Author, Year-Of-Publication, Publisher_), yang diperoleh dari Amazon Web Services. Perhatikan bahwa jika ada beberapa pengarang, hanya pengarang pertama yang disediakan. URL yang menautkan ke gambar sampul juga diberikan, muncul dalam tiga rasa yang berbeda (_Image-URL-S, Image-URL-M, Image-URL-L_), yaitu kecil, sedang, besar. URL ini mengarah ke situs web Amazon.  <br>
+   Buku diidentifikasi dengan ISBN masing-masing. ISBN yang tidak valid telah dihapus dari kumpulan data. Selain itu, beberapa informasi berbasis konten diberikan (_Book-Title, Book-Author, Year-Of-Publication, Publisher_), yang diperoleh dari Amazon Web Services. Perhatikan bahwa jika ada beberapa pengarang, hanya pengarang pertama yang disediakan. URL yang menautkan ke gambar sampul juga diberikan, muncul dalam tiga rasa yang berbeda (_Image-URL-S, Image-URL-M, Image-URL-L_), yaitu kecil, sedang, besar. URL ini mengarah ke situs web Amazon.  <br>
 ISBN = nomer identitas buku  <br>
 _Book-Title_ = Judul Buku <br>
 _Book-Author_ = Penulis Buku  <br>
@@ -32,7 +32,7 @@ _Publisher_ = Lembaga Publisher  <br>
 _Image-URL-S, Image-URL-M, Image-URL-L_ = Image Url yang mengarah pada situs web Amazon  <br>
 
 5. Ratings
-Berisi informasi peringkat buku. _Ratings_ (_Book-Rating_) dapat berupa nilai eksplisit, yang dinyatakan dalam skala 1-10 (nilai yang lebih tinggi menunjukkan apresiasi yang lebih tinggi), atau implisit, yang dinyatakan dengan angka 0.  <br>
+   Berisi informasi peringkat buku. _Ratings_ (_Book-Rating_) dapat berupa nilai eksplisit, yang dinyatakan dalam skala 1-10 (nilai yang lebih tinggi menunjukkan apresiasi yang lebih tinggi), atau implisit, yang dinyatakan dengan angka 0.  <br>
 _User-Id_ = identitas user yang memberikan ratings  <br>
 _Book-Ratings_ = rating yang dimiliki buku  <br>
 
@@ -47,11 +47,11 @@ sumber dataset https://www.kaggle.com/datasets/arashnic/book-recommendation-data
 
 
 ### _Eksploratory Data_
-membaca dataset
-pertama arahkan alamat path penyimpanan dataset , setalah itu membaca dan menampilkan data dengan "read_csv" pastikan dataset berformat csv. untuk melihat jumlah data dalam dataset gunakan "dataset.shape". 
+Membaca dataset
+Pertama arahkan alamat path penyimpanan dataset , setalah itu membaca dan menampilkan data dengan "read_csv" pastikan dataset berformat csv. untuk melihat jumlah data dalam dataset gunakan "dataset.shape". 
 
 1. Membaca Dataset rating <br>
-   Dalam Tabel 1 merupakan 5 data teratas dari isi dataset rating yang terdiri dari kolom User-Id, ISBN, dan Book-Rating. dalam tabel ada yang memiliki _book-rating_ yaitu 0 karena 0 termasuk nilai maka dapat digunakan dalam pemrosesan data.
+   Dalam Tabel 1 merupakan 5 data teratas dari isi dataset rating yang terdiri dari kolom _User-Id_, ISBN, dan _Book-Rating_ ,dalam tabel ada yang memiliki _book-rating_ yaitu 0 karena 0 termasuk nilai maka dapat digunakan dalam pemrosesan data. Di dataset Rating terdapat _User-Id_ yang sama disini berarti satu _user_ merating beberapa buku.
 
    Tabel 1. Dataset Rating <br>
 
@@ -64,7 +64,7 @@ pertama arahkan alamat path penyimpanan dataset , setalah itu membaca dan menamp
    |4|276729       |0521795028|6                |
   
 2. Melihat Dataset book <br>
-   pada tabel 2 berisi 5 data teratas dari dataset _book_ yang terdiri dari ISBN, _Book-Title_, _Book-Author_, _Year-Of-Publication_ dan _Publisher_ , ISBN disini sebagai kunci pembeda dengan data yang lainnya maka ISBN berbeda pada setiap datanya<br>
+   Pada tabel 2 berisi 5 data teratas dari dataset _book_ yang terdiri dari ISBN, _Book-Title_, _Book-Author_, _Year-Of-Publication_ dan _Publisher_ , ISBN disini sebagai kunci pembeda dengan data yang lainnya maka ISBN berbeda pada setiap datanya<br>
    Tabel 2 Dataset book <br>
 
    
@@ -78,54 +78,65 @@ pertama arahkan alamat path penyimpanan dataset , setalah itu membaca dan menamp
 <br>
 
 
-
-#### _Univariate Analysis_
-
-pada gambar 1 yaitu menvisualisasikan dan meneliti distribusi rating dataframe, rating terbanyak adalah 0 dan terendah adalaah 1 <br>
+   Pada gambar 1 yaitu memvisualisasikan dan meneliti distribusi rating dataframe. Rating terbanyak adalah 0 dan terendah adalaah 1, disini berarti kebanyakan orang tidak suka bukunya sehingga memberikan rating 0<br>
 
 
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/6mLd8JG/download-16.png" alt="download-16" border="0"></a>
 <br />
 gambar 1. Distribusi Rating <br>
 
-pada gambar 2 menvisualisasikan dan meneliti distribusi tahun terbitnya buku dari book dataframe disini data tahun terbit cenderung meningkat setiap tahunnya dan terbanyak tahun 2002 dan data terdiri dari tahun 1955 sampai dengan 2002 <br>
+Pada gambar 2 memvisualisasikan dan meneliti distribusi tahun terbitnya buku dari book dataframe disini data tahun terbit cenderung meningkat setiap tahunnya. Terbanyak tahun 2002, dataset ini terdiri dari tahun 1955 sampai dengan 2002. disini berarti semakin banyak orang membaca buku setiap tahunnya<br>
 
 
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/L9PXZPH/download-17.png" alt="download-17" border="0"></a><br />
-<br/>
+<a href="https://ibb.co/0jDwJMV"><img src="https://i.ibb.co/gMjngTF/download-21.png" alt="download-21" border="0"></a><br/>
 gambar 2. Distribusi tahun terbitnya buku <br>
 
 ## _Data Preparation_
 <br>
-melakukan transformasi pada data sehingga menjadi bentuk yang cocok untuk proses pemodelan
+Melakukan transformasi pada data sehingga menjadi bentuk yang cocok untuk proses pemodelan
 
-1.cek jumlah pengguna dan buku
+1.Cek jumlah pengguna dan buku <br>
+Pada Tabel 3 terdapat jumlah pengguna: 679, jumlah buku :4688 , Min Rating : 0.0 dan Max Rating : 10.0,
+didapatkan bahwa jumlah users lebih sedikit dari pada jumlah buku disini berarti kemungkinan besar orang merating lebih dari 1 buku.
 
-<a href="https://ibb.co/1dkKHj1"><img src="https://i.ibb.co/F0FJGC2/Screenshot-2024-04-01-181310.png" alt="Screenshot-2024-04-01-181310" border="0"></a>
 <br>
-Gambar 3<br>
-Pada Gambar 3 terdapat jumlah pengguna: 679, jumlah buku :4688 , Min Rating : 0.0 dan Max Rating : 10.0
+Tabel 3. Menghitung jumlah User, book, min rating dan max rating <br>
+
+
+|**Number of User**|**Number of Book**|**Min Rating**|**Max Rating**|
+|------------------|------------------|--------------|--------------|
+|679               |4688              |0.0           |10.0          |
+
+<br>
 
 2.  Cek Nilai _Missing Value_
-dengan" .sum() akan menampilkan data _missing value_. _missing value_ merupakan nilai yang tidak ada atau NaNN yang ada di dataset. _missing value_ bisa mempengaruhi kualiatas prediksi model sehingga harus dihapus jika data itu kecil atau mungkin tidak akan berdampak terhadap hasil model.
+Dengan" .sum() akan menampilkan data _missing value_. _missing value_ merupakan nilai yang tidak ada atau NaNN yang ada di dataset. _missing value_ bisa mempengaruhi kualiatas prediksi model sehingga harus dihapus jika data itu kecil atau mungkin tidak akan berdampak terhadap hasil model.
 3. Membuang Data _Missing Value_ dan Duplikasi
-dengan menggunakan perintah "dataset.dropna()" maka data NaaN akan terhapus. lalu untuk Menghapus Duplikasi yaitu dengan menggunakan perintah "dataset.drop_duplicates()" yang nantinya jika ada row yang duplikat akan terhapus.
+Dengan menggunakan perintah "dataset.dropna()" maka data NaaN akan terhapus. lalu untuk Menghapus Duplikasi yaitu dengan menggunakan perintah "dataset.drop_duplicates()" yang nantinya jika ada row yang duplikat akan terhapus.
+4. Train Test Split
+yaitu membagi data latih dan data uji sebesar 80:20 karena perbandingan itu sangat sering digunakan dan cenderung efesien.
+yang ouputnya seperti gambar 5 ini <br>
 
-## _Modeling Content Filtered Recommendation System_
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/CHS1mvB/Screenshot-2024-04-01-182102.png" alt="Screenshot-2024-04-01-182102" border="0"></a>
+<br>
+Gambar 5 <br>
 
+## _Modeling 
+### _Content Filtered Recommendation System_
+
+#### TF-IDF
 TF-IDF yang merupakan kepanjangan dari Term Frequency-Inverse Document Frequency memiliki fungsi untuk mengukur seberapa pentingnya suatu kata terhadap kata - kata lain dalam dokumen. Kita umumnya menghitung skor untuk setiap kata untuk menandakan pentingnya dalam dokumen dan corpus. Metode sering digunakan dalam Information Retrieval dan Text Mining.
-dengan menggunakan "from sklearn.feature_extraction.text import TfidfVectorizer" yang nantinya akan memunculkan nama nama penulisnya.
-lalu setelah itu akan melakukan fit dan transformasi ke dalam matriks, matriks tersebut adalah tfidf_matrix
+lalu setelah itu akan melakukan fit dan transformasi ke dalam matriks, matriks tersebut adalah tfidf_matrix. Pada Gambar 4 tfidf_matrix terdapat 10000 ukuran data dan 5575 nama penulis buku. 
+
 <br>
 
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/PWsz70x/Screenshot-2024-04-01-173228.png" alt="Screenshot-2024-04-01-173228" border="0"></a> <br>
 Gambar 4 matriks <br>
 
-Pada tfidf_matrix terdapat 10000 ukuran data dan 5575 nama penulis buku
 
-melihat data frame dari matriks dari judul buku dengan penulis - penulis buku seperti pada tabel 3 <br>
+Pada tabel 4 tertulis judul buku dan nama penulis, memang tidak ada yang bernilai 1.0 yang menandakan pada kolom itulah tertanda penulis dari bukunya <br>
 
-Tabel 3. matriks dari judul buku dengan penulis - penulis buku  <br>
+Tabel 4. matriks dari judul buku dengan penulis - penulis buku  <br>
 
 |book_title	|masters|paolo|lagasse|fargues|jewell|
 |-----------|-------|-----|-------|-------|------|
@@ -134,7 +145,8 @@ Tabel 3. matriks dari judul buku dengan penulis - penulis buku  <br>
 |Anna and the King of Siam|0.0|0.0|0.0|0.0|0.0|
 |Now You See It . . .|0.0|0.0|0.0|0.0|0.0|
 
-Dalam sistem rekomendasi, kita perlu mencari cara supaya item yang kita rekomendasikan tidak terlalu jauh dari data pusat, oleh karena itu kita butuh derajat kesamaan pada item, dalam proyek ini, buku dengan derajat kesamaan antar buku dengan cosine similarity hasilnya seperti ini <br>
+#### Cosine Similarity
+Digunakan supaya item yang kita rekomendasikan tidak terlalu jauh dari data pusat, oleh karena itu kita butuh derajat kesamaan pada item, dalam proyek ini, buku dengan derajat kesamaan antar buku dengan cosine similarity hasilnya seperti ini <br>
 array([[1., 0., 0., ..., 0., 0., 0.], <br>
        [0., 1., 0., ..., 0., 0., 0.],<br>
        [0., 0., 1., ..., 0., 0., 0.],<br>
@@ -144,21 +156,21 @@ array([[1., 0., 0., ..., 0., 0., 0.], <br>
        [0., 0., 0., ..., 0., 0., 1.]])<br>
 
 Nilai K pada fungsi menandakan jumlah rekomendasi yang akan ditampilkan
-Atribut argpartition berguna untuk mengambil sejumlah nilai k, dalam fungsi ini 5 tertinggi dari tingkat kesamaan yang berasal dari dataframe cosine_sim_df
+Atribut argpartition berguna untuk mengambil sejumlah nilai k, dalam fungsi ini 5 tertinggi dari tingkat kesamaan yang berasal dari dataframe cosine_sim_df. Kemudian, mengambil data dari bobot (tingkat kesamaan) tertinggi ke terendah. Data ini dimasukkan ke dalam variabel closest. Berikutnya, kita perlu menghapus book_title yang yang dicari agar tidak muncul dalam daftar rekomendasi. 
 
-##### Mencari Rekomendasi dari buku yang sudah dibaca 
-Buku yang dibaca yaitu The Diaries of Adam and Eve berikut detailnya sesuai dengan tabel 4
+- Mencari Rekomendasi dari buku yang sudah dibaca 
+Buku yang dibaca yaitu The Diaries of Adam and Eve berikut detailnya sesuai dengan tabel 5, ini menjadi buku yang dianggap sudah dibaca oleh user. dalam Cosine Similarity nanti akan mencari book yang mirip dengan The Diaries of Adam and Eve, sehingga perlu drop book_title The Diaries of Adam and Eve agar tidak muncul dalam daftar rekomendasi yang diberikan nanti. 
 
-Tabel 4. Hasil rekomendasi yang sudah dibaca <br>
+Tabel 5. Hasil rekomendasi buku yang sudah dibaca <br>
 
 |        |**book_ISBN**|**book_title**                |**book_author**|**book_year_of_publication**|
 |--------|-------------|------------------------------|---------------|------------|
 |**4700**|0965881199   |The Diaries of Adam and Eve	|Mark Twain	    |1998        |
 
 <br>
-selanjutnya yaitu menampilkan buku rekomendasi. mungkin beberapa kasus ada yang menampilkan rekomendasi yang sama jadi perlu dihapus jika ada rekomendasi yang sama dengan perintah "rekomendasi.drop_duplicates()". berikut ini 5 rekomendasi buku yang ada di tabel 5
+selanjutnya yaitu menampilkan buku rekomendasi. mungkin beberapa kasus ada yang menampilkan rekomendasi yang sama jadi perlu dihapus jika ada rekomendasi yang sama dengan perintah "rekomendasi.drop_duplicates()". berikut ini 5 rekomendasi buku yang ada di tabel 6, pada tabel disini ada kesamaan nama penulis bukunya berarti sistem memberikan rekomendasi buku dengan penulis yang sama dengan buku yang telah user baca.
 <br>
-Tabel 5<br>
+Tabel 6<br>
 
 |   |**book_title**|**book_author**|
 |---|--------------|---------------|
@@ -168,51 +180,28 @@ Tabel 5<br>
 |3|Treasury of Illustrated Classics: Adventures o..| Mark Twain|
 |4|A Connecticut Yankee in King Arthur's Court (D...	|Mark Twain|
 
-### Evaluation
-Dalam evaluasi yang digunakan adalah precision yaitu salah satu metrik yang digunakan untuk mengukur seberapa akurat sistem rekomendasi dalam memberikan rekomendasi yang relevan kepada pengguna.
-metrik evaluasi precision: Jumlah buku yang direkomendasikan sesuai penulis / Jumlah buku yang ditulis oleh penulis yang sama.
-dan mendapatkan nilai akurasinya sebesar 31.25%
 
-##  _Modeling Collaborative Filtered Recommendation System_
-Collaborative Based Filtering adalah sistem rekomendasi berdasarkan pendapat suatu komunitas.
-Kelebihan pada Collaborative Based Filtering bila dibandingkan dengan Content Based Filtering adalah pengguna dapat mengeksplorasi item atau konten di luar preferensi pengguna. Pengguna pun juga dapat mendapat rekomendasi sesuai dengan kecenderungan publik yang dianalisa lewat penilaian pengguna - pengguna lainnya.
-Kekurangan pada Collaborative Based Filtering adalah pengguna kurang mendapatkan rekomendasi sesuai preferensi pribadi. Konten - konten yang diberikan oleh sistem rekomendasi lebih banyak berasal dari preferensi publik dan bukan preferensi pribadi.Pada Collaborative Based Filtering, menggunakan penilaian dari pengguna - pengguna untuk mendapatkan rekomendasi buku - buku.
+
+###  _Collaborative Filtered Recommendation System_
+
+   Collaborative Based Filtering adalah sistem rekomendasi berdasarkan pendapat suatu komunitas.
+- Kelebihan pada Collaborative Based Filtering bila dibandingkan dengan Content Based Filtering adalah pengguna dapat mengeksplorasi item atau konten di luar preferensi pengguna. Pengguna pun juga dapat mendapat rekomendasi sesuai dengan kecenderungan publik yang dianalisa lewat penilaian pengguna - pengguna lainnya.
+- Kekurangan pada Collaborative Based Filtering adalah pengguna kurang mendapatkan rekomendasi sesuai preferensi pribadi. Konten - konten yang diberikan oleh sistem rekomendasi lebih banyak berasal dari preferensi publik dan bukan preferensi pribadi.Pada Collaborative Based Filtering, menggunakan penilaian dari pengguna - pengguna untuk mendapatkan rekomendasi buku - buku.
 
 pada _Collaborative Filtered Recommendation System_ menerapkan teknik collaborative filtering untuk membuat sistem rekomendasi. Teknik ini membutuhkan data rating dari user. menghasilkan rekomendasi sejumlah buku yang sesuai dengan preferensi pengguna berdasarkan rating yang telah diberikan sebelumnya. Dari data rating pengguna, kita akan mengidentifikasi buku-buku yang mirip dan belum pernah baca oleh pengguna untuk direkomendasikan. Kita akan menggunakan teknik _collaborative filtering_ untuk membuat rekomendasi ini. 
 
-
-1. Train Test Split
-
-yaitu membagi data latih dan data uji sebesar 80:20 karena perbandingan itu sangat sering digunakan dan cenderung efesien.
-yang ouputnya seperti gambar 5 ini <br>
-
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/CHS1mvB/Screenshot-2024-04-01-182102.png" alt="Screenshot-2024-04-01-182102" border="0"></a>
-<br>
-Gambar 5 <br>
-
-### Evaluation
-
 Pada tahap ini, model menghitung skor kecocokan antara pengguna dan buku dengan teknik embedding. Pertama, kita melakukan proses embedding terhadap data user dan buku. Selanjutnya, lakukan operasi perkalian dot product antara embedding user dan buku. Selain itu, kita juga dapat menambahkan bias untuk setiap user dan buku. Skor kecocokan ditetapkan dalam skala [0,1] dengan fungsi aktivasi sigmoid.
 
-Model ini menggunakan Binary Crossentropy untuk menghitung loss function, Adam (Adaptive Moment Estimation) sebagai optimizer, dan root mean squared error (RMSE) sebagai metrics evaluation. 
-
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/MDhMQ3V/download-19.png" alt="download-19" border="0"></a>
-<br>
-Gambar 6 <br>
-
-Perhatikanlah pada gambar 6, proses training model cukup smooth dan model konvergen pada epochs sekitar 30. Dari proses ini, kita memperoleh nilai error akhir sebesar sekitar 0.1983 dan error pada data validasi sebesar 0.3443. 
-
-
-
-### Mendapatkan Rekomendasi
+#### _Binary Crossentropy_
+Model ini menggunakan Binary Crossentropy untuk menghitung loss function, Adam (Adaptive Moment Estimation) sebagai optimizer
+- Mendapatkan Rekomendasi
 mendefinisikan ulang book_datase dan rating_dataset
 akan mengambil user_id secara acak dari rating_dataset. Dari user_id ini kita perlu mengetahui buku - buku apa saja yang pernah dibaca dan yang belum pernah dibaca, sehingga kita hanya dapat merekomendasikan buku - buku yang belum dibaca.
 hasilnya seperti gambar  7 ini <br>
 <br>
-Tabel 6 menampilkan rekomendasi buku buku dengan _user_ : 278418
-diantaranya menampilkan buku : <br>
+Tabel 7 menampilkan rekomendasi buku buku dengan _user_ : 278418. sistem memberikan rekomendasi buku yang mungkin user juga belum membacanya dan mungkin ada kesamaan dalam suatu hal bisa dari penulis yang sama, atau mungkin rating yang bagus<br>
 
-Tabel 6. 10 Rekomendasi Buku <br>
+Tabel 7. 10 Rekomendasi Buku <br>
 
 | | Book Title | Book Author |
 |-|------------|-------------|
@@ -227,6 +216,25 @@ Tabel 6. 10 Rekomendasi Buku <br>
 |8|CADDIE WOODLAWN | Carol Ryrie Brink |
 |9|The Thief of Always | Clive Barker |
 
+
+### Evaluation
+### _Content Filtered Recommendation System_
+   Dalam evaluasi yang digunakan adalah precision yaitu salah satu metrik yang digunakan untuk mengukur seberapa akurat sistem rekomendasi dalam memberikan rekomendasi yang relevan kepada pengguna. membandingkan tingkat kesamaannya
+metrik evaluasi 
+precision: Jumlah buku yang memiliki kemiripan dalam buku yang direkomendasikan/ Jumlah buku yang direkomendasikan
+penulis buku yang sudah di baca Mark Twain seperti tabel 5, dan jumlah buku yang direkomendasikan tabel 6
+jadi precision : 5/5 = 100% sama
+
+
+###  _Collaborative Filtered Recommendation System_
+
+menggunakan root mean squared error (RMSE) sebagai metrics evaluation. 
+
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/MDhMQ3V/download-19.png" alt="download-19" border="0"></a>
+<br>
+Gambar 6 <br>
+
+Perhatikanlah pada gambar 6, proses training model cukup smooth dan model konvergen pada epochs sekitar 30. Dari proses ini, kita memperoleh nilai error akhir sebesar sekitar 0.1983 dan error pada data validasi sebesar 0.3443. 
 
 ### Kesimpulan 
 1. sistem ini mampu menghasilkan sejumlah rekomendasi buku yang dipersonalisasi untuk pengguna dengan teknik content-based filtering agar bisa dengan mudah mencari buku yang bertipe sama dengan riwayat pemakaiannya. Dalam program ini merekomdasikannya berdasarkan kesaamaan penulis. <br/>
